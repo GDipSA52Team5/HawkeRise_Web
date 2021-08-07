@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div th:fragment="navbar1" id="navbar1">
+		<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+			<!-- Brand/logo -->
+			<a class="navbar-brand" href="/">HawkeRise</a>
+
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/hawker/register">Register</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hawker/login">Login</a></li>
+			</ul>
+		</nav>
+	</div>
+	
+	<div th:fragment="navbar2" id="navbar2">
+		<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+			<a class="navbar-brand" href="/hawker/home" th:utext="'Welcome, ' + ${hawker.firstName} + ' ' + ${hawker.lastName}">HawkeRise</a>
+
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/menu/list">What's On My Menu?</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hawker/logout">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+	
+	<div th:fragment="navbar3" id="navbar3">
+		<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+			<a class="navbar-brand" href="/hawker/home">HawkeRise</a>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/menu/list">What's On My Menu?</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hawker/logout">Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+
+</body>
+</html>

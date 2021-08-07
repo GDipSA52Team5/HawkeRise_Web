@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<title>New Menu Item - HawkeRise</title>
+</head>
+<body>
+	<div>
+		<header th:insert="layout/navbar.html :: navbar3"></header>
+	</div>
+
+	<div class="container-fluid h-100 d-flex align-items-center col justify-content-center" style="padding-top: 70px">
+		<div class="card" style="width: 30%">
+			<div class="card-body mb-4 col-11">
+				<h4 class="card-title">Add Menu Item</h4>
+				<hr>
+
+				<form th:action="@{/menu/save}" th:object="${newMenu}" method="POST"
+					enctype="multipart/form-data">
+
+					<input type="hidden" th:field="*{id}" th:required="required" />
+
+					Name: <input type="text" name="mname" th:field="*{name}" class="form-control my-2" 
+						placeholder="Item Name" th:required="required">
+						
+					Description: <textarea name="mdesc" th:field="*{description}" class="form-control my-2" 
+						placeholder="Enter Description" th:required="required" rows="3"></textarea>
+						
+					Price($): <input name="mprice" type="number" th:field="*{price}" class="form-control my-2"
+						placeholder="4.50" th:required="required" min="0.05" step="0.05"> 
+						
+					Status: <select name="mstatus" th:field="*{status}" class="form-control my-2" th:required="required">
+						<option value="Available">Available</option>
+						<option value="Running Low">Running Low</option>
+						<option value="Out of Stock!">Out of Stock!</option>
+					</select>
+
+					<div>
+						Photo: <input name="filePhoto" type="file" accept="image/png, image/jpeg" >
+					</div>
+					<br>
+
+					<button type="submit" class="btn btn-info mt-4">Save</button>
+				</form>
+				<hr>
+				<a th:href="@{/menu/list}">Back to Menu</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

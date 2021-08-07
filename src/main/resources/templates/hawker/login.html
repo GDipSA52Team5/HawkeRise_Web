@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<title>Hawker Login - HawkeRise</title>
+</head>
+<body>
+
+	<div>
+		<header th:insert="layout/navbar.html :: navbar1"></header>
+	</div>
+
+	<div class="container-fluid vh-100 d-flex align-items-center col justify-content-center" style="padding-top: 70px">
+		<div class="card" style="width: 30%">
+			<div class="card-body mb-4 col-11">
+				<h4 class="card-title">Login</h4>
+				<hr>
+
+				<form th:action="@{/hawker/authenticate}" th:object="${hawker}"
+					method="POST">
+
+					Username: 
+					<input type="text" th:field="*{userName}" class="form-control my-2" 
+						placeholder="Username" th:required="required"> 
+						
+					Password: 
+					<input type="password" th:field="*{password}" class="form-control my-2"
+						placeholder="Password" th:required="required">
+
+					<button type="submit" class="btn btn-dark mt-4">Log In</button>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

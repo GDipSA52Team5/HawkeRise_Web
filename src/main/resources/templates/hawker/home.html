@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<title>User Home Page - HawkeRise</title>
+</head>
+<body>
+
+	<div>
+		<header th:insert="layout/navbar.html :: navbar2"></header>
+	</div>
+
+	<div class="container-fluid vh-100 d-flex align-items-center col justify-content-center" style="padding: 70px">
+
+		<div class="w3-card-4" style="width: 50%">
+			<header class="w3-container w3-light-grey w3-center">
+				<h3 th:utext="${hawker.firstName} + ' ' + ${hawker.lastName}">User
+					Full Name</h3>
+			</header>
+			<div class="w3-container" style="padding: 10px">
+				<table th:object="${hawker}" class="table table-borderless">
+					<tr>
+						<td>Stall Name:</td>
+						<td th:text="*{stallName}"></td>
+					</tr>
+					<tr>
+						<td>Unit No:</td>
+						<td th:text="*{unitNumber}"></td>
+					</tr>
+					<tr>
+						<td>Hawker Centre:</td>
+						<td th:text="*{centre.name}"></td>
+					</tr>
+					<tr>
+						<td>Operating Hours:</td>
+						<td th:text="*{operatingHours} + ' to ' + *{closeHours}"></td>
+					</tr>	
+					<tr>
+						<td>Status:</td>
+						<td th:text="*{status}"></td>
+					</tr>
+					<tr>
+						<td>Contact Number:</td>
+						<td th:text="*{contactNumber}"></td>
+					</tr>
+				</table>
+			</div>
+
+			<a th:href="@{/hawker/update}" class="btn btn-info btn-lg btn-block">
+				Update Account Details</a>
+		</div>
+	</div>
+
+</body>
+</html>

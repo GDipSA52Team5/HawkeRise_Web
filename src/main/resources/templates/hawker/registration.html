@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<title>Hawker Registration - HawkeRise</title>
+</head>
+<body>
+
+	<div>
+		<header th:insert="layout/navbar.html :: navbar1"></header>
+	</div>
+
+	<div class="container-fluid h-100 d-flex align-items-center col justify-content-center" style="padding-top: 70px">
+		<div class="card" style="width: 30%">
+			<div class="card-body mb-4 col-11">
+				<h4 class="card-title">Registration Form</h4>
+				<hr>
+
+				<form th:action="@{/hawker/completeRegistration}"
+					th:object="${newHawker}" method="POST">
+
+					<input type="hidden" th:field="*{id}" th:required="required" />
+
+					First Name: 
+					<input type="text" th:field="*{firstName}" class="form-control my-2" 
+						placeholder="First Name" th:required="required">
+						
+					Last Name: 
+					<input type="text" th:field="*{lastName}" class="form-control my-2"
+						placeholder="Last Name" th:required="required">
+						
+					Hawker Centre: 
+					<select th:field="*{centre.name}" class="form-control my-2" th:required="required">
+						<option th:each="centre:${centres}" th:value="${centre.name}" th:text="${centre.name}"></option>
+					</select>
+					
+					Unit No.: 
+					<input type="text" th:field="*{unitNumber}" class="form-control my-2" 
+						placeholder="#XX-XXX" th:required="required" th:errorClass="is-invalid">
+					<div th:if="${#fields.hasErrors('unitNumber')}"
+						th:errors="*{unitNumber}" class="invalid-feedback"></div>
+
+					Stall Name: 
+					<input type="text" th:field="*{stallName}" class="form-control my-2" 
+						placeholder="Stall Name" th:required="required">
+						
+					<hr>
+					Tags:
+					<p></p>
+					<div class="form-check" th:each="tag:${tags}">
+						<input type="checkbox" th:field="*{tags}" th:value="${tag.name}"
+							th:text="${tag.name}" class="mx-2" /><br />
+					</div>
+					<hr>
+					
+					Operating Hours (in 24-hour format):
+					<div class="form-inline my-2">
+						<input type="text" class="form-control col-5" 
+							pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$" th:field="*{operatingHours}" placeholder="HH:MM" 
+							th:required="required" th:errorClass="is-invalid" title="24-hour Format">
+								
+						<p class="mx-3">to</p>
+						  
+						<input type="text" class="form-control col-5" 
+							pattern="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$" th:field="*{closeHours}" placeholder="HH:MM"
+							th:required="required" th:errorClass="is-invalid" title="24-hour Format">
+							
+						<div th:if="${#fields.hasErrors('operatingHours')}" 
+								th:errors="*{operatingHours}" class="invalid-feedback"></div>
+					</div>
+
+					Status: 
+					<select th:field="*{status}" class="form-control my-2" th:required="required">
+						<option th:value="Open" th:text="Open"></option>
+						<option th:value="Closed" th:text="Closed"></option>
+					</select>
+					
+					Contact Number: 
+					<input type="text" th:field="*{contactNumber}" class="form-control my-2" 
+						placeholder="Contact Number" th:required="required">
+						
+					Username: 
+					<input type="text" th:field="*{userName}" class="form-control my-2"
+						placeholder="Username" th:required="required" th:errorClass="is-invalid">
+					<div th:if="${#fields.hasErrors('userName')}"
+						th:errors="*{userName}" class="invalid-feedback"></div>
+
+					Password: 
+					<input type="password" th:field="*{password}" class="form-control my-2" 
+						placeholder="Password" th:required="required">
+
+					<button type="submit" class="btn btn-dark mt-4">Register</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

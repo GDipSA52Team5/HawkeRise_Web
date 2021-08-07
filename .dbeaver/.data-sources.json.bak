@@ -1,0 +1,38 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-17b157d6564-2e93380205dfe713": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "hawkerise1",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "hawkerise1",
+				"url": "jdbc:mysql://localhost:3306/hawkerise1",
+				"home": "/usr/local/mysql-8.0.25-macos11-x86_64",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20000",
+					"allowPublicKeyRetrieval": "TRUE",
+					"sslMode": "DISABLED"
+				},
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
